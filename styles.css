@@ -1,83 +1,45 @@
-/* Reset default browser styles */
-body, h1, h2, h3, p, ul, li, form {
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    cursor: none;
 }
+
 
 body {
-    font-family: Arial, sans-serif;
-    overflow: hidden; /* Prevent scrolling on the starfield background */
-    position: relative; /* Ensure canvas is positioned correctly */
-}
-
-header {
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
-nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-main {
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-h1, h2, h3 {
-    color: #333;
-    margin-bottom: 10px;
-}
-
-ul {
-    list-style: disc;
-    margin-left: 20px;
-}
-
-form input,
-form textarea {
-    margin-bottom: 10px;
-    padding: 5px;
-    width: 100%;
-}
-
-form button {
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-footer {
-    background-color: #f2f2f2;
-    padding: 20px;
-    text-align: center;
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
 }
 
 #starfield {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+#center-text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial, sans-serif;
+    font-size: 48px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    z-index: 1;
+}
+
+#cursor {
+    position: fixed;
+    width: 80px;
+    height: 80px;
+    background-image: url('rocket-cursor.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 3;
 }
