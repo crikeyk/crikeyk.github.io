@@ -7,6 +7,7 @@ body, h1, h2, h3, p, ul, li, form {
 body {
     font-family: Arial, sans-serif;
     overflow: hidden; /* Prevent scrolling on the starfield background */
+    position: relative; /* Ensure canvas is positioned correctly */
 }
 
 header {
@@ -72,4 +73,11 @@ footer {
     background-color: #f2f2f2;
     padding: 20px;
     text-align: center;
+}
+
+#starfield {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
