@@ -60,7 +60,7 @@
 
 var cursorOrienatation = 0;
 
-window.addEventListener('mousemove', function (event) {
+function updateCursor(event) {
     var cursor = document.getElementById('cursor');
     var rocketRect = cursor.getBoundingClientRect();
 
@@ -85,16 +85,30 @@ window.addEventListener('mousemove', function (event) {
     cursorOrienatation = rotationDegrees;
 
     // console.log(cursorOrienatation)
+};
+
+window.addEventListener('mousemove', function (event) {
+    updateCursor(event);
 });
 
-document.addEventListener('touchmove', function(e) {
-    var cursor = document.querySelector('cursor');
-    var touch = e.touches[0];
-    var angle = Math.atan2(touch.clientY, touch.clientX) * (180 / Math.PI);
-    cursor.style.transform = 'rotate(' + angle + 'deg)';
-    cursor.style.left = touch.clientX + 'px';
-    cursor.style.top = touch.clientY + 'px';
+document.addEventListener('touchmove', function(event) {
+    var touch = event.touches[0];
+    updateCursor(touch);
   });
+
+
+document.addEventListener('touchstart', function(event) {
+    event.preventDefault(); // Prevents the default touch behavior
+    var touch = event.touches[0];
+    updateCursor(touch);
+  });
+  
+document.addEventListener('touchmove', function(event) {
+    event.preventDefault(); // Prevents the default touch behavior
+    var touch = event.touches[0];
+    updateCursor(touch);
+});
+
 
 const textBlock = document.getElementById("center-text");
 const textBlockOriginalText = textBlock.textContent
