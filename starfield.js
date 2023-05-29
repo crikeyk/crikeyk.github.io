@@ -87,7 +87,14 @@ window.addEventListener('mousemove', function (event) {
     // console.log(cursorOrienatation)
 });
 
-
+document.addEventListener('touchmove', function(e) {
+    var cursor = document.querySelector('cursor');
+    var touch = e.touches[0];
+    var angle = Math.atan2(touch.clientY, touch.clientX) * (180 / Math.PI);
+    cursor.style.transform = 'rotate(' + angle + 'deg)';
+    cursor.style.left = touch.clientX + 'px';
+    cursor.style.top = touch.clientY + 'px';
+  });
 
 const textBlock = document.getElementById("center-text");
 const textBlockOriginalText = textBlock.textContent
