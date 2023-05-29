@@ -58,7 +58,12 @@
     });
 })();
 
+
+const textBlock = document.getElementById("center-text");
+const textBlockOriginalText = textBlock.textContent
+
 var cursorOrienatation = 0;
+var textBoundingBox = textBlock.getBoundingClientRect()
 
 function updateCursor(event) {
     var cursor = document.getElementById('cursor');
@@ -84,18 +89,24 @@ function updateCursor(event) {
     cursor.style.transform = 'translate(-50%, -50%) rotate(' + rotationDegrees + 'deg)';
     cursorOrienatation = rotationDegrees;
 
+    updateTextBox(rocketX, rocketY);
+
     // console.log(cursorOrienatation)
 };
+
+function updateTextBox(rocketX, rocketY){
+
+    if (rocketX > textBoundingBox.left && rocketX < textBoundingBox.right && rocketY > textBoundingBox.top && rocketY < textBoundingBox.bottom){
+        textBlock.textContent = 'yes.';
+    } else {
+        textBlock.textContent = textBlockOriginalText;
+        textBoundingBox = textBlock.getBoundingClientRect();        
+    }
+}
 
 window.addEventListener('mousemove', function (event) {
     updateCursor(event);
 });
-
-document.addEventListener('touchmove', function(event) {
-    var touch = event.touches[0];
-    updateCursor(touch);
-  });
-
 
 document.addEventListener('touchstart', function(event) {
     event.preventDefault(); // Prevents the default touch behavior
@@ -109,18 +120,10 @@ document.addEventListener('touchmove', function(event) {
     updateCursor(touch);
 });
 
+// textBlock.addEventListener('mouseover', function() {
+//   textBlock.textContent = 'yes.';
+// });
 
-const textBlock = document.getElementById("center-text");
-const textBlockOriginalText = textBlock.textContent
-
-textBlock.addEventListener('mouseover', function() {
-  textBlock.textContent = 'yes.';
-});
-
-textBlock.addEventListener('mouseout', function() {
-  textBlock.textContent = textBlockOriginalText;
-});
-
-textBlock.addEventListener('DOMContentLoaded', function() {
-    console.log("Loaded")
-  });
+// textBlock.addEventListener('mouseout', function() {
+//   textBlock.textContent = textBlockOriginalText;
+// });
