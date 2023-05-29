@@ -72,6 +72,7 @@ window.addEventListener('mousemove', function (event) {
 
     var angle = Math.atan2(mouseY - rocketY, mouseX - rocketX);
     var rotationDegrees = angle * (180 / Math.PI) + 90;
+    // rotationDegrees = 65;
     var dist = Math.sqrt(Math.pow(mouseX - rocketX, 2) + Math.pow(mouseY - rocketY, 2))
 
     if(dist < 1){
@@ -85,3 +86,20 @@ window.addEventListener('mousemove', function (event) {
 
     // console.log(cursorOrienatation)
 });
+
+
+
+const textBlock = document.getElementById("center-text");
+const textBlockOriginalText = textBlock.textContent
+
+textBlock.addEventListener('mouseover', function() {
+  textBlock.textContent = 'yes.';
+});
+
+textBlock.addEventListener('mouseout', function() {
+  textBlock.textContent = textBlockOriginalText;
+});
+
+textBlock.addEventListener('DOMContentLoaded', function() {
+    console.log("Loaded")
+  });
